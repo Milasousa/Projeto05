@@ -42,12 +42,7 @@ public class ProfessorController {
 
     @PostMapping
     public Professor criarProfessor(@RequestBody Professor prof) {
-        if ((verificarPorId(prof.getId())) || (verificarPorEmail(prof.getEmail()))) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    "Já existe um Professor com essa matricula ou e-mail");
-        } else {
             return professorrepository.save(prof);
-        }
     }
 
     @PutMapping("/{id}")

@@ -1,15 +1,17 @@
 import React from 'react';
+import './App.css';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
-import { Button, Container } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 const Home = () => {
   return (
-    <div>
+    <div class="btn-group btn-group-lg" role="group" aria-label="...">
       <AppNavbar/>
-      <Container fluid>
-        <Button color="link"><Link to="/groups">Manage JUG Tour</Link></Button>
-      </Container>
+        <header>
+        <Button ><Link to="/alunos" style={{ textDecoration: 'none', color: "white" }}>Alunos</Link></Button>
+        <Button ><Link to="/professores" style={{ textDecoration: 'none', color: "white" }}>Professores</Link></Button>
+        </header>
     </div>
   );
 }
