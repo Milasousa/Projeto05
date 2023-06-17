@@ -9,6 +9,7 @@ const ProfessorEdit = () => {
   const initialFormState = {
     name: '',
     email: '',
+    formacao: '',
     funcao: ''
   };
   const [professor, setProfessor] = useState(initialFormState);

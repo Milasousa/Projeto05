@@ -10,8 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +20,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(name = "projetos", uniqueConstraints = {
     @UniqueConstraint(columnNames = { "id" })
@@ -32,15 +31,16 @@ public class Projeto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome", nullable = false)
-    private String nome;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
     @OneToOne
     private Professor professor;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "projeto")
     private List<Aluno> aluno;
 

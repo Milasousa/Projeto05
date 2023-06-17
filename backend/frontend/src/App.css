@@ -1,3 +1,7 @@
+body{
+background-color: rgb(75, 74, 74);
+}
+
 .App {
   text-align: center;
 }
@@ -44,8 +48,9 @@ nav + .container, nav + .container-fluid {
 a,link{
   color: #eee;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   padding: 1rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 header {
@@ -56,4 +61,16 @@ header {
   display: flex;
   justify-content: space-around;
   background-color: rgb(75, 74, 74);
+
+}
+
+.img-fluid {
+  max-width:200px;
+  max-height:500px;
+  margin-top: 40px;
+  margin-left: 250px;
+  align-items: center;
+  width: auto;
+  height: auto;
+  mix-blend-mode: multiply;
 }

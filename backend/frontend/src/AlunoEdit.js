@@ -73,7 +73,8 @@ const AlunoEdit = () => {
                 <option value='JUNIOR'>JUNIOR</option>
                 <option value='PLENO'>PLENO</option>
                 <option value='SENIOR'>SENIOR</option>
-                <option value='SENIOR'>MASTER</option>
+                <option value='MASTER'>MASTER</option>
+                <option value={aluno.funcao} onChange={handleChange} autoComplete="funcao"></option>
               </select>
             </FormGroup>
           <FormGroup>

@@ -41,7 +41,7 @@ public class ProjetoController {
     private AlunoRepository alunorrepository;
 
     @GetMapping
-        public List<Projeto> listAllProjetos() {
+        public List<Projeto> getProjetos() {
             return projetoRepository.findAll();
         }
 
