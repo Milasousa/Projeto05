@@ -10,7 +10,10 @@ const ProfessorEdit = () => {
     name: '',
     email: '',
     formacao: '',
-    funcao: ''
+    funcao: '',
+    nameprojeto: '',
+    descricaoprojeto:''
+
   };
   const [professor, setProfessor] = useState(initialFormState);
   const navigate = useNavigate();
@@ -48,7 +51,7 @@ const ProfessorEdit = () => {
     navigate('/professores');
   }
 
-  const title = <h2>{professor.id ? 'Editar Professor' : 'Adicionar Professor'}</h2>;
+  const title = <h2>{professor.id ? 'Editar Professor ou Projeto Associado' : 'Adicionar Professor'}</h2>;
 
   return (<div>
       <AppNavbar/>
@@ -61,22 +64,36 @@ const ProfessorEdit = () => {
                    onChange={handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="email">email</Label>
+            <Label for="email">E-mail</Label>
             <Input type="email" name="email" id="email" value={professor.email || ''}
                    onChange={handleChange} autoComplete="email"/>
           </FormGroup>
+          <FormGroup>
+            <Label for="formacao">Formação</Label>
+            <Input type="text" name="formacao" id="formacao" value={professor.formacao || ''}
+                   onChange={handleChange} autoComplete="formacao"/>
+          </FormGroup>
             <FormGroup>
-            <Alert severity="info">Tipos de Função para Professor: ESTAGIO, JUNIOR, PLENO, SENIOR, MASTER</Alert>
+            <Alert severity="info">Tipos de Função para Professor: COORDINATOR,ADVISOR,RESEARCHER</Alert>
               <Label for="funcao">Função </Label>
               <select name="funcao" id="funcao" value={professor.funcao || ''}
                    onChange={handleChange} autoComplete="funcao">
-                <option value='ESTAGIO'>ESTAGIO</option>
-                <option value='JUNIOR'>JUNIOR</option>
-                <option value='PLENO'>PLENO</option>
-                <option value='SENIOR'>SENIOR</option>
-                <option value='SENIOR'>MASTER</option>
+                <option value='COORDINATOR'>COORDINATOR</option>
+                <option value='ADVISOR'>ADVISOR</option>
+                <option value='RESEARCHER'>RESEARCHER</option>
+                <option value={professor.funcao} onChange={handleChange} autoComplete="funcao"></option>
               </select>
             </FormGroup>
+            <FormGroup>
+            <Label for="nameprojeto">Nome do Projeto</Label>
+            <Input type="text" name="nameprojeto" id="nameprojeto" value={professor.nameprojeto || ''}
+                   onChange={handleChange} autoComplete="nameprojeto"/>
+          </FormGroup>
+          <FormGroup>
+            <Label for="descricaoprojeto">Descrição do Projeto</Label>
+            <Input type="text" name="descricaoprojeto" id="descricaoprojeto" value={professor.descricaoprojeto || ''}
+                   onChange={handleChange} autoComplete="descricaoprojeto"/>
+          </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
             <Button color="secondary" tag={Link} to="/professores">Cancel</Button>

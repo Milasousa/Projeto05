@@ -7,13 +7,12 @@ import { useCookies } from 'react-cookie';
 
 const ProjetoEdit = () => {
   const initialFormState = {
-    name: '',
-    descricao: ''
+    nameprojeto: '',
+    descricaoprojeto: ''
     };
   const [projeto, setProjeto] = useState(initialFormState);
   const navigate = useNavigate();
   const { id } = useParams();
-  const { professorid } = useParams();
   const [cookies] = useCookies(['XSRF-TOKEN']);
 
   useEffect(() => {
@@ -23,13 +22,6 @@ const ProjetoEdit = () => {
         .then(data => setProjeto(data));
     }
   }, [id, setProjeto]);
-  useEffect(() => {
-    if (professorid === 'new') {
-      fetch(`/projetos/${professorid}`)
-        .then(response => response.json())
-        .then(data => setProjeto(data));
-    }
-  }, [professorid, setProjeto]);
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -62,14 +54,14 @@ const ProjetoEdit = () => {
         {title}
         <Form onSubmit={handleSubmit}>
           <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" value={projeto.name || ''}
-                   onChange={handleChange} autoComplete="name"/>
+            <Label for="nameprojeto">Nome</Label>
+            <Input type="text" name="nameprojeto" id="nameprojeto" value={projeto.nameprojeto || ''}
+                   onChange={handleChange} autoComplete="nameprojeto"/>
           </FormGroup>
           <FormGroup>
-            <Label for="descricao">descricao</Label>
-            <Input type="text" name="descricao" id="descricao" value={projeto.descricao || ''}
-                   onChange={handleChange} autoComplete="descricao"/>
+            <Label for="descricaoprojeto">Descrição</Label>
+            <Input type="text" name="descricaoprojeto" id="descricaoprojeto" value={projeto.descricaoprojeto || ''}
+                   onChange={handleChange} autoComplete="descricaoprojeto"/>
           </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}

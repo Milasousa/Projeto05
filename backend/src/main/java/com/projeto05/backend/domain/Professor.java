@@ -31,7 +31,7 @@ import lombok.Setter;
 @Table(name = "professores", uniqueConstraints = {
         @UniqueConstraint(columnNames = { "email", "id" })
 })
-public class Professor{
+public class Professor extends Projeto{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,9 +49,6 @@ public class Professor{
     @Enumerated(EnumType.STRING)
     @Column(name = "funcao")
     private IntegranteENUM funcao;
-    
-    @OneToOne(mappedBy = "professor")
-    @JoinColumn(name = "projeto_id")
-    private Projeto projetos;
+
 
 }

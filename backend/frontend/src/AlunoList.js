@@ -37,7 +37,10 @@ class AlunoList extends Component {
                 <td>{aluno.name}</td>
                 <td>{aluno.email}</td>
                 <td>{aluno.funcao}</td>
-                <td>{aluno.projeto}</td>
+                <td>{aluno.projeto.nameprojeto}
+                </td>
+                <td>{aluno.projeto.descricaoprojeto}
+                </td>
                 <td>
                     <ButtonGroup>
                         <Button  color="primary" tag={Link} to={"/alunos/" + aluno.id}>Editar</Button>
@@ -60,8 +63,9 @@ class AlunoList extends Component {
                         <tr>
                             <th width="30%">Nome</th>
                             <th width="30%">E-mail</th>
-                            <th width="20%">Função</th>
-                            <th width="30%">Projeto</th>
+                            <th width="10%">Função</th>
+                            <th width="20%">Projeto</th>
+                            <th width="20%">Descrição</th>
                             <th width="40%">Ações</th>
                         </tr>
                         </thead>

@@ -1,6 +1,6 @@
 package com.projeto05.backend.domain;
 public enum IntegranteENUM {
-    ESTAGIO, JUNIOR, PLENO, SENIOR, MASTER ,COORDINATOR;
+    ESTAGIO, JUNIOR, PLENO, SENIOR, MASTER ,COORDINATOR,RESEARCHER,ADVISOR;
 
     public static boolean validar(String papel) {
         try {

@@ -46,7 +46,7 @@ public class Aluno {
     @Column(name = "funcao")
     private IntegranteENUM funcao;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Projeto.class)
     @JoinColumn(name = "projeto_id")
     private Projeto projeto;    
 

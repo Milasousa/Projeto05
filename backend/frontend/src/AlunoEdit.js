@@ -9,7 +9,10 @@ const AlunoEdit = () => {
   const initialFormState = {
     name: '',
     email: '',
-    funcao: ''
+    funcao: '',
+    projeto: {
+      id: '1'
+    }
   };
   const [aluno, setAluno] = useState(initialFormState);
   const navigate = useNavigate();
@@ -60,7 +63,7 @@ const AlunoEdit = () => {
                    onChange={handleChange} autoComplete="name"/>
           </FormGroup>
           <FormGroup>
-            <Label for="email">email</Label>
+            <Label for="email">E-mail</Label>
             <Input type="email" name="email" id="email" value={aluno.email || ''}
                    onChange={handleChange} autoComplete="email"/>
           </FormGroup>
@@ -77,6 +80,15 @@ const AlunoEdit = () => {
                 <option value={aluno.funcao} onChange={handleChange} autoComplete="funcao"></option>
               </select>
             </FormGroup>
+          <FormGroup>
+            <Label for="id"> Código do Projeto</Label>
+            <Input type="number" min="1" name="id" id="id" value={aluno.projeto.id|| ''}
+                   onChange={handleChange} autoComplete="projeto.id"/>
+          </FormGroup>
+          <FormGroup>
+            <h5>Os Projetos Disponíveis:</h5>
+          <iframe src="/projetos" id="Iframe" title="description" frameborder="0"></iframe>
+          </FormGroup>
           <FormGroup>
             <Button color="primary" type="submit">Save</Button>{' '}
             <Button color="secondary" tag={Link} to="/alunos">Cancel</Button>

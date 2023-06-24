@@ -7,13 +7,13 @@ class ProfessorList extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {professores: []};
+        this.state = { professores: [] };
     }
 
     componentDidMount() {
         fetch('/professores')
             .then(response => response.json())
-            .then(data => this.setState({professores: data}));
+            .then(data => this.setState({ professores: data }));
     }
 
     async remove(id) {
@@ -25,12 +25,12 @@ class ProfessorList extends Component {
             }
         }).then(() => {
             let updatedProfessores = [...this.state.professores].filter(i => i.id !== id);
-            this.setState({professores: updatedProfessores});
+            this.setState({ professores: updatedProfessores });
         });
     }
 
     render() {
-        const {professores} = this.state;
+        const { professores } = this.state;
 
         const professorList = professores.map(professor => {
             return <tr key={professor.id}>
@@ -40,8 +40,13 @@ class ProfessorList extends Component {
                 <td>{professor.funcao}</td>
                 <td>
                     <ButtonGroup>
-                        <Button  color="primary" tag={Link} to={"/professores/" + professor.id}>Editar</Button>
-                        <Button  color="danger" onClick={() => this.remove(professor.id)}>Apagar</Button>
+                        <Button color="dark" tag={Link} to={"/projetos/"}>Visualizar</Button>
+                    </ButtonGroup>
+                </td>
+                <td>
+                    <ButtonGroup>
+                        <Button color="primary" tag={Link} to={"/professores/" + professor.id}>Editar</Button>
+                        <Button color="danger" onClick={() => this.remove(professor.id)}>Apagar</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -49,7 +54,7 @@ class ProfessorList extends Component {
 
         return (
             <div>
-                <AppNavbar/>
+                <AppNavbar />
                 <Container>
                     <div className="float-right">
                         <Button color="success" tag={Link} to="/professores/new" >Adicionar Professores</Button>
@@ -57,23 +62,24 @@ class ProfessorList extends Component {
                     <h3>Professores</h3>
                     <Table className="mt-4">
                         <thead>
-                        <tr>
-                        <th width="30%">Nome</th>
-                            <th width="30%">E-mail</th>
-                            <th width="20%">Formação</th>
-                            <th width="20%">Funcão</th>
-                            <th width="40%">Ações</th>
-                        </tr>
+                            <tr>
+                                <th width="30%">Nome</th>
+                                <th width="20%">E-mail</th>
+                                <th width="20%">Formação</th>
+                                <th width="20%">Funcão</th>
+                                <th width="10%">Projeto</th>
+                                <th width="40%">Ações</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        {professorList}
+                            {professorList}
                         </tbody>
                     </Table>
                     <Button color="secondary" tag={Link} to="/" >Voltar</Button>
                 </Container>
             </div>
         );
-        
+
     }
 }
 

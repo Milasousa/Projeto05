@@ -57,7 +57,7 @@ public class ProjetoController {
             @PathVariable("professorId") Long professorId) throws NotFoundException {
                     try {
                         Professor professor = professorrepository.findById(professorId).get();
-                        projeto.setProfessor(professor);
+                        //projeto.setProfessor(professor);
                         professor.setFuncao(IntegranteENUM.COORDINATOR);
                         professorrepository.save(professor);
                         return ResponseEntity.ok(projetoRepository.save(projeto));

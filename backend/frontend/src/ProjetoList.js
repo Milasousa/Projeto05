@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
+import { Button, ButtonGroup, Container, Table,Alert } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 
@@ -34,13 +34,13 @@ class ProjetoList extends Component {
 
         const projetoList = projetos.map(projeto => {
             return <tr key={projeto.id}>
+                <td>{projeto.id}</td>
+                <td>{projeto.nameprojeto}</td>
+                <td>{projeto.descricaoprojeto}</td>
                 <td>{projeto.name}</td>
-                <td>{projeto.descricao}</td>
-                <td>{projeto.professor.name}</td>
                 <td>
                     <ButtonGroup>
-                        <Button  color="primary" tag={Link} to={"/projetos/" + projeto.id}>Editar</Button>
-                        <Button  color="danger" onClick={() => this.remove(projeto.id)}>Apagar</Button>
+                        <Button  color="primary" tag={Link} to={"/professores/" + projeto.id}>Editar</Button>
                     </ButtonGroup>
                 </td>
             </tr>
@@ -51,12 +51,14 @@ class ProjetoList extends Component {
                 <AppNavbar/>
                 <Container>
                     <div className="float-right">
-                        <Button color="success" tag={Link} to="/projetos/new" >Adicionar Projetos</Button>
+                        <Button color="success" tag={Link} to="/professores" >Adicionar Projetos</Button>
+                        <Alert severity="info">Para adicionar um projeto, será necessário associar a um professor existente ou criar.</Alert>
                     </div>
                     <h3>Projetos</h3>
                     <Table className="mt-4">
                         <thead>
                         <tr>
+                            <th width="10%">Código</th>
                             <th width="30%">Nome</th>
                             <th width="30%">Descrição</th>
                             <th width="30%">Professor</th>

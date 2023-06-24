@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
 import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,7 +18,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+import javax.persistence.InheritanceType;
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,22 +27,20 @@ import lombok.Setter;
 @Table(name = "projetos", uniqueConstraints = {
     @UniqueConstraint(columnNames = { "id" })
 })
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Projeto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "nameprojeto", nullable = true)
+    private String nameprojeto;
 
-    @Column(name = "descricao", nullable = false)
-    private String descricao;
+    @Column(name = "descricaoprojeto", nullable = true)
+    private String descricaoprojeto;
 
-    @OneToOne
-    private Professor professor;
-    
     @JsonIgnore
-    @OneToMany(mappedBy = "projeto")
+    @OneToMany(mappedBy = "projeto",targetEntity = Aluno.class)
     private List<Aluno> aluno;
 
 
